@@ -175,6 +175,7 @@ namespace ResultsAnalyzer
             this.MedianBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.MedianBox.Location = new System.Drawing.Point(641, 53);
             this.MedianBox.Name = "MedianBox";
+            this.MedianBox.ReadOnly = true;
             this.MedianBox.Size = new System.Drawing.Size(100, 20);
             this.MedianBox.TabIndex = 11;
             // 
@@ -183,6 +184,7 @@ namespace ResultsAnalyzer
             this.StandardDeviationBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.StandardDeviationBox.Location = new System.Drawing.Point(641, 24);
             this.StandardDeviationBox.Name = "StandardDeviationBox";
+            this.StandardDeviationBox.ReadOnly = true;
             this.StandardDeviationBox.Size = new System.Drawing.Size(100, 20);
             this.StandardDeviationBox.TabIndex = 10;
             // 
@@ -191,6 +193,7 @@ namespace ResultsAnalyzer
             this.MaxValueBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.MaxValueBox.Location = new System.Drawing.Point(364, 55);
             this.MaxValueBox.Name = "MaxValueBox";
+            this.MaxValueBox.ReadOnly = true;
             this.MaxValueBox.Size = new System.Drawing.Size(100, 20);
             this.MaxValueBox.TabIndex = 9;
             // 
@@ -199,6 +202,7 @@ namespace ResultsAnalyzer
             this.MinValueBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.MinValueBox.Location = new System.Drawing.Point(364, 25);
             this.MinValueBox.Name = "MinValueBox";
+            this.MinValueBox.ReadOnly = true;
             this.MinValueBox.Size = new System.Drawing.Size(100, 20);
             this.MinValueBox.TabIndex = 8;
             // 
@@ -207,6 +211,7 @@ namespace ResultsAnalyzer
             this.VarianceBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.VarianceBox.Location = new System.Drawing.Point(107, 56);
             this.VarianceBox.Name = "VarianceBox";
+            this.VarianceBox.ReadOnly = true;
             this.VarianceBox.Size = new System.Drawing.Size(100, 20);
             this.VarianceBox.TabIndex = 7;
             // 
@@ -215,6 +220,7 @@ namespace ResultsAnalyzer
             this.MeanValueBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.MeanValueBox.Location = new System.Drawing.Point(107, 26);
             this.MeanValueBox.Name = "MeanValueBox";
+            this.MeanValueBox.ReadOnly = true;
             this.MeanValueBox.Size = new System.Drawing.Size(100, 20);
             this.MeanValueBox.TabIndex = 6;
             // 
