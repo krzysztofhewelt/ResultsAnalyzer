@@ -101,6 +101,7 @@ namespace ResultsAnalyzer
             this.OpenFileButton.TabIndex = 1;
             this.OpenFileButton.Text = "Open...";
             this.OpenFileButton.UseVisualStyleBackColor = true;
+            this.OpenFileButton.Click += new System.EventHandler(this.OpenFileButton_Click);
             // 
             // label2
             // 
@@ -128,6 +129,7 @@ namespace ResultsAnalyzer
             // 
             // ChartsButton
             // 
+            this.ChartsButton.Enabled = false;
             this.ChartsButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.ChartsButton.Location = new System.Drawing.Point(358, 45);
             this.ChartsButton.Name = "ChartsButton";
@@ -138,7 +140,6 @@ namespace ResultsAnalyzer
             // 
             // PreviewDataBox
             // 
-            this.PreviewDataBox.Enabled = false;
             this.PreviewDataBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.PreviewDataBox.Location = new System.Drawing.Point(6, 19);
             this.PreviewDataBox.Name = "PreviewDataBox";
@@ -323,6 +324,7 @@ namespace ResultsAnalyzer
             // 
             // SaveAnalysisButton
             // 
+            this.SaveAnalysisButton.Enabled = false;
             this.SaveAnalysisButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.SaveAnalysisButton.Location = new System.Drawing.Point(453, 22);
             this.SaveAnalysisButton.Name = "SaveAnalysisButton";
@@ -333,6 +335,7 @@ namespace ResultsAnalyzer
             // 
             // GenerateNewProbesButton
             // 
+            this.GenerateNewProbesButton.Enabled = false;
             this.GenerateNewProbesButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.GenerateNewProbesButton.Location = new System.Drawing.Point(453, 51);
             this.GenerateNewProbesButton.Name = "GenerateNewProbesButton";
