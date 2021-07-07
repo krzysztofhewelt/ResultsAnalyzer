@@ -58,6 +58,8 @@ namespace ResultsAnalyzer
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+            this.saveFileDialog2 = new System.Windows.Forms.SaveFileDialog();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -307,20 +309,20 @@ namespace ResultsAnalyzer
             // GenerateNewProbesStatus
             // 
             this.GenerateNewProbesStatus.AutoSize = true;
+            this.GenerateNewProbesStatus.ForeColor = System.Drawing.Color.DarkGreen;
             this.GenerateNewProbesStatus.Location = new System.Drawing.Point(547, 57);
             this.GenerateNewProbesStatus.Name = "GenerateNewProbesStatus";
-            this.GenerateNewProbesStatus.Size = new System.Drawing.Size(48, 13);
+            this.GenerateNewProbesStatus.Size = new System.Drawing.Size(0, 13);
             this.GenerateNewProbesStatus.TabIndex = 6;
-            this.GenerateNewProbesStatus.Text = "label12";
             // 
             // SaveAnalysisStatus
             // 
             this.SaveAnalysisStatus.AutoSize = true;
+            this.SaveAnalysisStatus.ForeColor = System.Drawing.Color.DarkGreen;
             this.SaveAnalysisStatus.Location = new System.Drawing.Point(547, 27);
             this.SaveAnalysisStatus.Name = "SaveAnalysisStatus";
-            this.SaveAnalysisStatus.Size = new System.Drawing.Size(48, 13);
+            this.SaveAnalysisStatus.Size = new System.Drawing.Size(0, 13);
             this.SaveAnalysisStatus.TabIndex = 5;
-            this.SaveAnalysisStatus.Text = "label11";
             // 
             // SaveAnalysisButton
             // 
@@ -332,6 +334,7 @@ namespace ResultsAnalyzer
             this.SaveAnalysisButton.TabIndex = 4;
             this.SaveAnalysisButton.Text = "Save...";
             this.SaveAnalysisButton.UseVisualStyleBackColor = true;
+            this.SaveAnalysisButton.Click += new System.EventHandler(this.SaveAnalysisButton_Click);
             // 
             // GenerateNewProbesButton
             // 
@@ -343,6 +346,7 @@ namespace ResultsAnalyzer
             this.GenerateNewProbesButton.TabIndex = 3;
             this.GenerateNewProbesButton.Text = "Save...";
             this.GenerateNewProbesButton.UseVisualStyleBackColor = true;
+            this.GenerateNewProbesButton.Click += new System.EventHandler(this.GenerateNewProbesButton_Click);
             // 
             // NumberOfNewProbesBox
             // 
@@ -435,6 +439,8 @@ namespace ResultsAnalyzer
         private System.Windows.Forms.Label GenerateNewProbesStatus;
         private System.Windows.Forms.Label SaveAnalysisStatus;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog1;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog2;
     }
 }
 

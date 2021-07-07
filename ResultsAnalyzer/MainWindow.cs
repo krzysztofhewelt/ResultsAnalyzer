@@ -9,6 +9,7 @@ namespace ResultsAnalyzer
     public partial class MainWindow : Form
     {
         private String filename = ""; // file path
+        private Double meanValue, variance, minValue, maxValue, standardDeviation, median;
 
         public MainWindow()
         {
@@ -40,31 +41,29 @@ namespace ResultsAnalyzer
 
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
-                this.filename = openFileDialog1.FileName;
+                filename = openFileDialog1.FileName;
 
                 try
                 {
                     ResetAllFields();
 
-                    Double[] inputData = ReadMeasurements(this.filename);
+                    Double[] inputData = ReadMeasurements(filename);
 
                     if (inputData.Length > 0)
                     {
-                        Double meanValue, variance, minValue, maxValue, standardDeviation, median;
-
                         EnableAllButtons();
 
                         DisplayContentInPreviewData(filename);
 
                         HelperCalculations helperCalc = new HelperCalculations(inputData);
-                        meanValue = helperCalc.CalcMeanValue();
-                        variance  = helperCalc.CalcVariance();
-                        minValue  = inputData.Min();
-                        maxValue  = inputData.Max();
-                        median    = helperCalc.CalcMedian();
-                        standardDeviation = helperCalc.CalcStandardDeviation();
+                        meanValue = Math.Round(helperCalc.CalcMeanValue(), 8);
+                        variance = Math.Round(helperCalc.CalcVariance(), 8);
+                        minValue = inputData.Min();
+                        maxValue = inputData.Max();
+                        median = Math.Round(helperCalc.CalcMedian(), 8);
+                        standardDeviation = Math.Round(helperCalc.CalcStandardDeviation(), 8);
 
-                        DisplayInBoxes(meanValue, variance, minValue, maxValue, standardDeviation, median);
+                        DisplayInBoxes();
                     }
                 }
                 catch
@@ -118,12 +117,12 @@ namespace ResultsAnalyzer
             try
             {
                 StreamReader sr = new StreamReader(filename);
-                while(!sr.EndOfStream)
+                while (!sr.EndOfStream)
                 {
-                    line = sr.ReadLine().Trim(new Char[] {';'});
+                    line = sr.ReadLine().Trim(new Char[] { ';' });
                     success = Double.TryParse(line, out number);
 
-                    if(success)
+                    if (success)
                     {
                         dataFromFile.Add(number);
                     }
@@ -160,25 +159,138 @@ namespace ResultsAnalyzer
         /// <summary>
         /// Displays calculates in boxes in the "Data analysis" groupbox.
         /// </summary>
-        /// <param name="meanValue">Calculated mean value</param>
-        /// <param name="variance">Calculated variance</param>
-        /// <param name="minValue">Minimum value</param>
-        /// <param name="maxValue">Maximum value</param>
-        /// <param name="standardDeviation">Calculated standard deviation</param>
-        /// <param name="median">Calculated median</param>
-        private void DisplayInBoxes(Double meanValue, Double variance, Double minValue, Double maxValue, Double standardDeviation, Double median)
+        private void DisplayInBoxes()
         {
-            MeanValueBox.Text = Math.Round(meanValue, 8).ToString();
-            VarianceBox.Text = Math.Round(variance, 8).ToString();
-            MinValueBox.Text = Math.Round(minValue, 8).ToString();
-            MaxValueBox.Text = Math.Round(maxValue, 8).ToString();
-            StandardDeviationBox.Text = Math.Round(standardDeviation, 8).ToString();
-            MedianBox.Text = Math.Round(median, 8).ToString();
+            MeanValueBox.Text = meanValue.ToString();
+            VarianceBox.Text = variance.ToString();
+            MinValueBox.Text = minValue.ToString();
+            MaxValueBox.Text = maxValue.ToString();
+            StandardDeviationBox.Text = standardDeviation.ToString();
+            MedianBox.Text = median.ToString();
         }
 
+        /// <summary>
+        /// Displays whole file content in the PreviewDataBox.
+        /// </summary>
+        /// <param name="filename">File path</param>
         private void DisplayContentInPreviewData(String filename)
         {
             PreviewDataBox.Text = File.ReadAllText(filename);
+        }
+
+
+        private void SaveAnalysisButton_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog saveFileDialog1 = new SaveFileDialog
+            {
+                InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),
+                CheckPathExists = true,
+
+                DefaultExt = "txt",
+                Filter = "Text files (*.txt)|*.txt|All files (*.*)|*.*",
+                FilterIndex = 1,
+                RestoreDirectory = false
+            };
+
+            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    FileStream stream = null;
+                    stream = new FileStream(saveFileDialog1.FileName, FileMode.Create);
+
+                    using (StreamWriter sw = new StreamWriter(stream))
+                    {
+                        sw.WriteLine("Mean value: " + meanValue);
+                        sw.WriteLine("Variance: " + variance);
+                        sw.WriteLine("Minimum value: " + minValue);
+                        sw.WriteLine("Maximum value: " + maxValue);
+                        sw.WriteLine("Standard Deviation: " + standardDeviation);
+                        sw.WriteLine("Median: " + median);
+                    }
+
+                    stream.Close();
+
+                    MessageBox.Show("File saved successfully", "Sukces", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    SaveAnalysisStatus.Text = "Saved";
+                }
+                catch
+                {
+                    MessageBox.Show("An error occurred during saving file!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void GenerateNewProbesButton_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog saveFileDialog2 = new SaveFileDialog
+            {
+                InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),
+                CheckPathExists = true,
+
+                DefaultExt = "txt",
+                Filter = "Text files (*.txt)|*.txt|All files (*.*)|*.*",
+                FilterIndex = 1,
+                RestoreDirectory = false
+            };
+           
+            try
+            {
+                Int32 howManyProbes = Convert.ToInt32(NumberOfNewProbesBox.Value);
+
+                if(howManyProbes > 0)
+                {
+                    if (saveFileDialog2.ShowDialog() == DialogResult.OK)
+                        GenerateNewProbesFile(saveFileDialog2.FileName, howManyProbes, minValue, maxValue);
+                }
+                else
+                {
+                    MessageBox.Show("The number of new probes must be greater than 0!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+            }
+            catch
+            {
+                MessageBox.Show("The given number of new probes isn't number!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+        }
+
+        /// <summary>
+        /// Generate n new probes in given range.
+        /// </summary>
+        /// <param name="howMany">How many probes to generate</param>
+        /// <param name="min">Minimum value from range</param>
+        /// <param name="max">Maximum vaue from range</param>
+        private void GenerateNewProbesFile(String filename, Int32 howMany, Double min, Double max)
+        {
+            try
+            {
+                FileStream stream = null;
+
+                stream = new FileStream(filename, FileMode.Create);
+
+                Random value = new Random();
+                Double randomValue;
+
+                using (StreamWriter sw = new StreamWriter(stream))
+                {
+                    for (Int32 i = 1; i <= howMany; i++)
+                    {
+                        randomValue = value.NextDouble() * (max - min) + min;
+                        sw.WriteLine(randomValue + ";");
+                    }
+                }
+
+                stream.Close();
+
+                MessageBox.Show("Probes generated successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                GenerateNewProbesStatus.Text = "Saved";
+            }
+            catch
+            {
+                MessageBox.Show("An error occurred during saving file!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }
