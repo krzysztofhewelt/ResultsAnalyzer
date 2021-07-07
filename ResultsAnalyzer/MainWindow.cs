@@ -41,7 +41,6 @@ namespace ResultsAnalyzer
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
                 this.filename = openFileDialog1.FileName;
-                Console.WriteLine("OK");
 
                 try
                 {
@@ -70,7 +69,7 @@ namespace ResultsAnalyzer
                 }
                 catch
                 {
-                    MessageBox.Show("Nie udało się otworzyć pliku!\nPlik może być używany przez proces", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("An error occurred during opening file!\nFile may be used by other process", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
             }
@@ -169,12 +168,12 @@ namespace ResultsAnalyzer
         /// <param name="median">Calculated median</param>
         private void DisplayInBoxes(Double meanValue, Double variance, Double minValue, Double maxValue, Double standardDeviation, Double median)
         {
-            MeanValueBox.Text = meanValue.ToString();
-            VarianceBox.Text = variance.ToString();
-            MinValueBox.Text = minValue.ToString();
-            MaxValueBox.Text = maxValue.ToString();
-            StandardDeviationBox.Text = standardDeviation.ToString();
-            MedianBox.Text = median.ToString();
+            MeanValueBox.Text = Math.Round(meanValue, 8).ToString();
+            VarianceBox.Text = Math.Round(variance, 8).ToString();
+            MinValueBox.Text = Math.Round(minValue, 8).ToString();
+            MaxValueBox.Text = Math.Round(maxValue, 8).ToString();
+            StandardDeviationBox.Text = Math.Round(standardDeviation, 8).ToString();
+            MedianBox.Text = Math.Round(median, 8).ToString();
         }
 
         private void DisplayContentInPreviewData(String filename)
