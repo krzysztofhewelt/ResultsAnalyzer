@@ -89,10 +89,13 @@ namespace ResultsAnalyzer
             Double median;
             int mid;
 
+            Double[] temp = inputData;
+            Array.Sort(temp);
+
             if(inputData.Length > 0)
             {
                 mid = inputData.Length / 2;
-                median = (inputData.Length % 2 != 0) ? inputData[mid] : (inputData[mid] + inputData[mid + 1]) / 2;
+                median = (inputData.Length % 2 != 0) ? inputData[mid] : (inputData[mid] + inputData[mid - 1]) / 2;
             }
             else
             {
