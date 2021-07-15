@@ -131,7 +131,6 @@ namespace ResultsAnalyzer
             // 
             // ChartsButton
             // 
-            this.ChartsButton.Enabled = false;
             this.ChartsButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.ChartsButton.Location = new System.Drawing.Point(358, 45);
             this.ChartsButton.Name = "ChartsButton";
@@ -139,6 +138,7 @@ namespace ResultsAnalyzer
             this.ChartsButton.TabIndex = 1;
             this.ChartsButton.Text = "Charts";
             this.ChartsButton.UseVisualStyleBackColor = true;
+            this.ChartsButton.Click += new System.EventHandler(this.ShowChartWindow_Click);
             // 
             // PreviewDataBox
             // 
@@ -352,6 +352,11 @@ namespace ResultsAnalyzer
             // 
             this.NumberOfNewProbesBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.NumberOfNewProbesBox.Location = new System.Drawing.Point(394, 54);
+            this.NumberOfNewProbesBox.Maximum = new decimal(new int[] {
+            999,
+            0,
+            0,
+            0});
             this.NumberOfNewProbesBox.Name = "NumberOfNewProbesBox";
             this.NumberOfNewProbesBox.Size = new System.Drawing.Size(39, 20);
             this.NumberOfNewProbesBox.TabIndex = 2;

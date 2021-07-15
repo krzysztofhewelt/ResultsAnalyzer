@@ -58,8 +58,8 @@ namespace ResultsAnalyzer
                         HelperCalculations helperCalc = new HelperCalculations(inputData);
                         meanValue = Math.Round(helperCalc.CalcMeanValue(), 8);
                         variance = Math.Round(helperCalc.CalcVariance(), 8);
-                        minValue = inputData.Min();
-                        maxValue = inputData.Max();
+                        minValue = helperCalc.FindMin();
+                        maxValue = helperCalc.FindMax();
                         median = Math.Round(helperCalc.CalcMedian(), 8);
                         standardDeviation = Math.Round(helperCalc.CalcStandardDeviation(), 8);
 
@@ -291,6 +291,14 @@ namespace ResultsAnalyzer
             {
                 MessageBox.Show("An error occurred during saving file!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void ShowChartWindow_Click(object sender, EventArgs e)
+        {
+            Double[] inputData = ReadMeasurements(filename);
+
+            ChartsWindow chart = new ChartsWindow(inputData);
+            chart.ShowDialog();
         }
     }
 }
