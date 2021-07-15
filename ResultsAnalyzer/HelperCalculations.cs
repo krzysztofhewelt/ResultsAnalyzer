@@ -104,5 +104,25 @@ namespace ResultsAnalyzer
 
             return median;
         }
+
+        /// <summary>
+        /// Finds minimum value from input data.
+        /// </summary>
+        /// <returns>Minimum value of input data</returns>
+        public Double FindMin()
+        {
+            Double min = (inputData.Length != 0) ? inputData.Min() : double.NaN;
+            return min;
+        }
+
+        /// <summary>
+        /// Finds maximum value from input data.
+        /// </summary>
+        /// <returns>Maximum value of input data</returns>
+        public Double FindMax()
+        {
+            Double max = (inputData.Length != 0) ? inputData.Max() : double.NaN;
+            return max;
+        }
     }
 }
