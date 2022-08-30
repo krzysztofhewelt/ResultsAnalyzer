@@ -1,4 +1,4 @@
-![Main Window](screenshots/main_window.png)
+![Main Window](Screenshots/main_window.png)
 
 # Results Analyzer
 Results Analyzer is a user-friendly program, that processes the results, analyzes and visualizes them.
@@ -20,5 +20,5 @@ Project created with:
 * based on Windows Forms
 
 # Screenshots
-<img src="screenshots/main_window.png" alt="main window">
-<img src="screenshots/charts_window.png" alt="charts window">
+<img src="Screenshots/main_window.png" alt="main window">
+<img src="Screenshots/charts_window.png" alt="charts window">
