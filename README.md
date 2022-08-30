@@ -1,8 +1,9 @@
+![Main Window](screenshots/main_window.png)
+
 # Results Analyzer
+Results Analyzer is a user-friendly program, that processes the results, analyzes and visualizes them.
 
-Results Analyzer is a user-friendly program, that processes the results and analyzes them.
-
-## Features
+# Features
 
 * User-friendly and light
 * Opens a text file with saved measurement results
@@ -11,8 +12,13 @@ Results Analyzer is a user-friendly program, that processes the results and anal
 maximal)
 * Saves calculated parameters to a text file
 * Giving the visualization of the measurement values on the fully customizable chart
+* Availability to generate new probes
 
-## Technologies
+# Technologies
 Project created with:
 * .NET Framework v4.7.2
 * based on Windows Forms
+
+# Screenshots
+<img src="screenshots/main_window.png" alt="main window">
+<img src="screenshots/charts_window.png" alt="charts window">
