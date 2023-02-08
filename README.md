@@ -14,10 +14,13 @@ maximal)
 * Giving the visualization of the measurement values on the fully customizable chart
 * Availability to generate new probes
 
-# Technologies
+# Technologies and tools
 Project created with:
 * .NET Framework v4.7.2
 * based on Windows Forms
+
+Used IDE:
+- Visual Studio 2022
 
 # Screenshots
 <img src="Screenshots/main_window.png" alt="main window">
